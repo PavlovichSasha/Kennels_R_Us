@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/cart', 'HomeController@index')->name('cart');
 Route::get('/about', 'HomeController@index')->name('about');
-Route::get('/products', 'HomeController@index')->name('products');
-Route::get('/index', 'HomeController@index')->name('home');
+
+Route::get('/products', function(){
+return view('products');
+})->name('products');
+
+Route::get('/index', 'HomeController@index')->name('index');
 ?>

@@ -34,16 +34,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('home') }}</a>
+                                <a class="nav-link" href="{{ route('index') }}">{{ __('Home') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('products') }}">{{ __('products') }}</a>
+                                <a class="nav-link" href="{{ route('products') }}">{{ __('Products') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('cart') }}">{{ __('cart') }}</a>
+                                <a class="nav-link" href="{{ route('cart') }}">{{ __('Cart') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('about') }}">{{ __('about') }}</a>
+                                <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
                             </li>
                     </ul>
 
