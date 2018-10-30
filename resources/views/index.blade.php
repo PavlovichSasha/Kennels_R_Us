@@ -14,8 +14,28 @@
                         </div>
                     @endif
 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <div>
+                        <p>Kennels R Us delivers quality outdoor units for a variety  of household pets. 
+                            Out unique brand of kennel is easy to customize so that you can create a safe 
+                            place for your pet that will fit your needs. </p>
+
+                        <p>The simplified ordering process ensures that you get your perfect kennel fast.
+                        Choose standard size options from out Products page, or create a custom outdoor 
+                        facility in whatever size you need. </p>
+                    </div>
+
                 </div>
+            </div>
+            <div class = "row justify-content-center">
+                <figure>
+                <img class = "frontpg-pic" src = "img/owner.jpg" alt = "picture of owners">
+                <figcaption class = "centered">Our Owner: Dave Smith</figcaption>
+                </figure>
+
+                <figure>
+                <img class = "frontpg-pic" style = "width: 300px" src = "img/happy_dog.jpg" alt = "picture of dog">
+                <figcaption class = "centered">His Beautiful Dog: Rosco</figcaption>
+                </figure>
             </div>
         </div>
     </div>

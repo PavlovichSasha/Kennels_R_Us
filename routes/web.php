@@ -17,12 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/cart', 'HomeController@index')->name('cart');
-Route::get('/about', 'HomeController@index')->name('about');
+Route::get('/index', 'HomeController@index')->name('index');
 
 Route::get('/products', function(){
 return view('products');
 })->name('products');
 
-Route::get('/index', 'HomeController@index')->name('index');
+Route::get('/cart', function(){
+return view('cart');
+})->name('cart');
+
+Route::get('/about', function(){
+return view('about');
+})->name('about');
 ?>

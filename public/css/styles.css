@@ -1,0 +1,140 @@
+/****
+Group C
+CSCI 4750
+
+Color http://paletton.com/#uid=71f0U0kris+gWBilUuLtNnnynis
+****/
+
+/*BASIC LAYOUT*/
+html, body{
+	height: 100%;
+	width: 100%;
+}
+html{
+	background-color: #140D66;
+}
+/*body*/
+body {
+	margin: 0% auto;
+	background-image: linear-gradient(to right, #140D66,#221A82, 
+									#4D46AB, #6F69C1);					
+}
+figure{
+	display: inline-block;
+}
+.centered{
+	text-align: center;
+}
+
+.frontpg-pic{
+	height: 300px;
+	width: 200px;
+	display: inline-block;
+	margin: 10px;
+	border: 2px solid #47127D;
+}
+/*MAIN*/
+.card-header{
+	background-image: linear-gradient(to right,#fb8762, #f8624a);
+	color: #341d2d;
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Baloo Bhaijaan', cursive;
+}
+.card{
+	background-image: linear-gradient(to right, #fae474,#fdbf50);
+}
+main{
+	margin: 2%;
+	background-image: linear-gradient(to right, #fae474, #fdbf50, 
+									#fb8762, #f8624a, #341d2d);
+	border: 2px;
+	border-style: solid;
+	border-color: #937100; 
+}
+main p{
+	padding: 1%;
+}
+.product-pic{
+	height: 300px;
+	width: 300px;
+	display: inline-block;
+	margin: 2%;
+	border: 2px solid #47127D;
+}
+
+/*HEADER*/
+header {
+	text-align: center;
+	height: 30%;
+	width: 100%;
+}
+header h1{
+	margin: 0;
+}
+.ban-text{
+	text-align: center;
+  	position: relative;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	color: #E7BA22;
+	text-shadow: 2px 2px 5px #072F60;
+	font-family: 'Spicy Rice', cursive;
+}
+.back-img{
+	background-image: url("../img/banner_2.jpg");
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+/*MENU/DROPDOWN*/
+.navbar{
+	background-color: #3B69A0;
+}
+.navbar a:hover{
+	background-color: #BAAD0D;
+} 
+
+	
+/*FOOTER*/
+footer{
+	font-size: small;
+	font-style: italic;
+	text-align: right;
+	border-top: 1px solid #E7BA22;
+	background-color: #3B69A0;
+}
+
+/*FORMS*/
+/*regular form*/
+form {
+	
+}
+label {
+	
+}
+
+/*TABLE*/
+
+/*LINKS*/
+/* unvisited link */
+a {
+	text-decoration: none;
+}
+a:link {
+    color: #fae474;
+}
+/* visited link */
+a:visited {
+    color: #f8624a;
+}
+/* mouse over link */
+a:hover {
+    color: #5B229C;
+}
+/* selected link */
+a:active {
+    color: #341d2d;
+}

@@ -15,10 +15,19 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Spicy+Rice" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
+<header>
+    <div class = "back-img">
+        <div class = "ban-text">
+            <h1 style = "font-size: 75px">Kennels R Us</h1>
+        </div>
+    </div>
+</header>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
@@ -87,5 +96,8 @@
             @yield('content')
         </main>
     </div>
+    <footer>
+        <p class = "copyright">Kennels R Us since 2018</p>
+    </footer>
 </body>
 </html>
