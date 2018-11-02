@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<?php 
+
+$userId = auth()->user()->id;
+$items = Cart::session($userId)->getContent();
+$total = Cart::session($userId)->getTotal();
+
+
+?>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,11 +24,35 @@
                         </div>
                     @endif
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                    deserunt mollit anim id est laborum.</p>
+                    <table id="cart"class="table table-hover text-center">
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th> 
+                            <th>Price</th>
+                            <th>total</th>
+                            <th>-</th>
+                        </tr>
+                        @foreach ($items->sortBy('id') as $item)
+                        <tr>
+                            <td>{{$item->name}}</td>
+                            <td><input type="number" name="qty" min = "0" value='{{$item->quantity}}'></td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$item->getPriceSum()}}</td>
+                            <td><a href=#>Remove</td>
+
+                        </tr>
+                        @endforeach
+
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total:</td>
+                        <td>{{$total}}</td>
+                        <td></td>
+                        </tr>
+                    </table>
+
+
                 </div>
             </div>
         </div>
