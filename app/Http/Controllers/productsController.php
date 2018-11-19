@@ -26,21 +26,21 @@ class productsController extends Controller {
 
     $credentials = $request->only('email', 'password');
     //dd($request); 
+    
     if (Auth::check()) {
         // Authentication passed...
         //dd($request); 
 
         $userId = auth()->user()->id; // or any string represents user identifier
-    Cart::session($userId)->add($productID, $productName, $productPrice, $productQty, array());
+        Cart::session($userId)->add($productID, $productName, $productPrice, $productQty, array());
     
     return redirect()->route('products');
 
     }else
     {
 
-
-
-
+        Cart::add($productID, $productName, $productPrice, $productQty, array());
+        return redirect()->route('products');
 
     }
 

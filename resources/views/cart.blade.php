@@ -3,10 +3,18 @@
 @section('content')
 <?php 
 
+
+
+
+if (Auth::check()) {
 $userId = auth()->user()->id;
 $items = Cart::session($userId)->getContent();
 $total = Cart::session($userId)->getTotal();
-
+}
+else{
+    $items = Cart::getContent();
+    $total = Cart::getTotal(); 
+}
 
 ?>
 
@@ -28,14 +36,16 @@ $total = Cart::session($userId)->getTotal();
                         <tr>
                             <th>Product</th>
                             <th>Quantity</th> 
+                            <th></th>
                             <th>Price</th>
                             <th>total</th>
-                            <th>-</th>
+                            <th></th>
                         </tr>
                         @foreach ($items->sortBy('id') as $item)
                         <tr>
                             <td>{{$item->name}}</td>
                             <td><input type="number" name="qty" min = "0" value='{{$item->quantity}}'></td>
+                            <td><a href=#>update</td>
                             <td>{{$item->price}}</td>
                             <td>{{$item->getPriceSum()}}</td>
                             <td><a href=#>Remove</td>
