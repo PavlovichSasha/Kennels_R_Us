@@ -18,7 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/index', 'HomeController@index')->name('index');
-Route::post('/products', 'productsController@AddToCart')->name('addToCart');
+
+Route::post('/products', 'productsController@addToCart')->name('addToCart');
+
+Route::post('/update', 'productsController@updateCart')->name('updateCart');
+
+Route::post('/remove', 'productsController@removeFromCart')->name('removeFromCart');
+
 
 Route::get('/products', function(){
 return view('products');
@@ -31,4 +37,5 @@ return view('cart');
 Route::get('/about', function(){
 return view('about');
 })->name('about');
+
 ?>

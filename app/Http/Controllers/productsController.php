@@ -26,7 +26,7 @@ class productsController extends Controller {
 
     $credentials = $request->only('email', 'password');
     //dd($request); 
-    
+
     if (Auth::check()) {
         // Authentication passed...
         //dd($request); 
@@ -43,8 +43,68 @@ class productsController extends Controller {
         return redirect()->route('products');
 
     }
+}
 
 
+    public function updateCart(Request $request) {
 
+     
+         $productID = $request->input('itemID');
+         $productID = (int)$productID;
+         
+         $productQty = $request->input('qty');
+         $productQty = (int)$productQty;
+
+         if (Auth::check()) {
+             // Authentication passed...
+
+             $userId = auth()->user()->id; // or any string represents user identifier
+             Cart::session($userId)->update($productID, array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $productQty
+                ),
+              ));
+         
+         return redirect()->route('cart');
+     
+         }else
+         {
+            
+            Cart::update($productID, array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $productQty
+                ),
+              ));
+              return redirect()->route('cart');
+         }
+    }
+
+    
+
+    public function removeFromCart(Request $request) {
+      
+        //dd($request); 
+
+         $productID = $request->input('itemID');
+         $productID = (int)$productID;
+        
+
+         if (Auth::check()) {
+             // Authentication passed...
+            
+             $userId = auth()->user()->id; // or any string represents user identifier
+             Cart::session($userId)->remove($productID);
+         
+         return redirect()->route('cart');
+     
+         
+         }else
+         {
+            Cart::remove($productID);
+
+            return redirect()->route('cart');
+         }
     }
 }

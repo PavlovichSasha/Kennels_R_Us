@@ -7,9 +7,9 @@
 
 
 if (Auth::check()) {
-$userId = auth()->user()->id;
-$items = Cart::session($userId)->getContent();
-$total = Cart::session($userId)->getTotal();
+    $userId = auth()->user()->id;
+    $items = Cart::session($userId)->getContent();
+    $total = Cart::session($userId)->getTotal();
 }
 else{
     $items = Cart::getContent();
@@ -44,25 +44,32 @@ else{
                         @foreach ($items->sortBy('id') as $item)
                         <tr>
                             <td>{{$item->name}}</td>
-                            <td><input type="number" name="qty" min = "0" value='{{$item->quantity}}'></td>
-                            <td><a href=#>update</td>
+                            <td>
+                                <form action="{{ route('updateCart') }}" method='post'>
+                                    <input type="number" name="qty" min = "0" value='{{$item->quantity}}'>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="itemID" value="{{$item->id}}"> 
+                                    <input type="submit">
+                                </form>
+                            </td>
+                                
                             <td>{{$item->price}}</td>
                             <td>{{$item->getPriceSum()}}</td>
-                            <td><a href=#>Remove</td>
-
+                            <td> <form action="{{ route('removeFromCart') }}" method='post'>
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="itemID" value="{{$item->id}}"> 
+                                    <input type='submit' value='remove'>
+                                    </form>
+                                </td>
                         </tr>
                         @endforeach
-
                         <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Total:</td>
-                        <td>{{$total}}</td>
-                        <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total:</td>
+                            <td>{{$total}}</td>
                         </tr>
                     </table>
-
-
                 </div>
             </div>
         </div>
