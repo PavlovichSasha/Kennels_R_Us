@@ -30,6 +30,10 @@ Route::get('/products', function(){
 return view('products');
 })->name('products');
 
+Route::get('/custom', function(){
+return view('custom');
+})->name('custom');
+
 Route::get('/cart', function(){
 return view('cart');
 })->name('cart');
