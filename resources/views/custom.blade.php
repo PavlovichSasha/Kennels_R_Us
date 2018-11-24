@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
+var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+
+</script>
+
+
+
+
 <div class="container">
+
+
     <div class="row justify-content-center">
         <div class="col-4">
             <div class="card">
@@ -11,7 +22,14 @@
                     <p class="card-text">designed by you to support all your pets needs</p>
                 </div>
                 <div class="card-body">
-                <form>
+
+                    @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                    {{$errors->first()}}
+                    </div>
+                    @endif
+
+                 <form action="{{ route('customAddCart') }}" method='post'>
                     <fieldset>
                         <legend>Select a kennel size</legend>
 
@@ -35,34 +53,35 @@
 
                     </fieldset>
                     <fieldset>
-                        <legend>Choose some features</legend>
+                        <legend>Select Additional Features</legend>
 
                         <div>
-                            <input type="checkbox" id="bowls" name="feature"
+                            <input type="checkbox" id="bowls" name="feature1"
                                 value="bowls" />
                             <label for="bowls">Food and Water bowls</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="roof" name="feature"
+                            <input type="checkbox" id="roof" name="feature2"
                                 value="roof" />
                             <label for="roof">Upgraded Roof</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="lock" name="feature"
+                            <input type="checkbox" id="lock" name="feature3"
                                 value="lock" />
                             <label for="lock">Improved Lock</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" id="floor" name="feature"
+                            <input type="checkbox" id="floor" name="feature4"
                                 value="floor" />
                             <label for="floor">Heated Floor</label>
                         </div>
 
                     </fieldset>
-                    <button href = "#cart">Add to cart</button>
+                    <input type='submit' value='Add to Cart'>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </form>
 
                 </div> 

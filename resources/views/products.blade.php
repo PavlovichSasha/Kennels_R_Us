@@ -10,7 +10,7 @@
             <img class="product-pic" src='img/kennel-1.jpg' alt="Small Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Small Kennel</h5>
-                    <p class="card-text">suitable for very small dogs and cats.</p>
+                    <p class="card-text">suitable for very small dogs and cats. <br> $49.99</p>
                     <form action="{{ route('addToCart') }}" method='post'>
                         Quantity:
                         <input type="number" name="qty" min = "0">
@@ -31,7 +31,7 @@
             <img class="product-pic" src='img/kennel-2.jpg' alt="Standard Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Standard Kennel</h5>
-                    <p class="card-text">suitable for pets of the medium variety</p>
+                    <p class="card-text">suitable for pets of the medium variety. <br> $59.99</p>
                     <form action="{{ route('addToCart') }}" method='post'>
                         Quantity:
                         <input type="number" name="qty" min = "0">
@@ -54,7 +54,7 @@
             <img class="product-pic" src='img/kennel-3.jpg' alt="Large Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Large Kennel</h5>
-                    <p class="card-text">suitable for the largest pets.</p>
+                    <p class="card-text">suitable for the largest pets. <br> $69.99</p>
                     <form action="{{ route('addToCart') }}" method='post'>
                         Quantity:
                         <input type="number" name="qty" min = "0">
@@ -75,7 +75,7 @@
             <img class="product-pic" src='img/kennel-custom.jpg' alt="Medium Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Custom Kennel</h5>
-                    <p class="card-text">designed by you to support all your pets needs</p>
+                    <p class="card-text">designed by you to support all your pets needs <br> $99.99</p>
                     <a href = "/custom"><button style = "color: black">Click for Customization Options</button></a>
                 </div>
             </div>

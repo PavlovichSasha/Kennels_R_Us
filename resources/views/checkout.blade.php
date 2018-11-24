@@ -45,6 +45,7 @@ function showShippingDetails() {
                             {{ session('status') }}
                         </div>
                     @endif
+<form action="{{ route('checkoutComplete') }}" method='post'>
 <div class='row'>
         <div class="col-md-4">
             <h3><b>Billing Address</b></h3>
@@ -64,8 +65,8 @@ function showShippingDetails() {
 
           <div class="col-md-4">
             <h3><b>Payment</b></h3>
-            <label for="fname"><b>Accepted Cards</b></label>
-                <div class="icon-container">
+            <div class="icon-container">
+                    <label for="fname"><b>Accepted Cards</b></label>
                     <i class="fa fa-cc-visa" style="color:navy;"></i>
                     <i class="fa fa-cc-amex" style="color:blue;"></i>
                     <i class="fa fa-cc-mastercard" style="color:red;"></i>
@@ -97,6 +98,10 @@ function showShippingDetails() {
                 <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> </span></h4>
                 @foreach ($items->sortBy('id') as $item)
                 <p>{{$item->name}} &nbsp;&nbsp;x{{$item->quantity}} <span class='price' style="float:right;">${{$item->price}}</span></p>
+
+                <input type="hidden" name="qty{{$item->id}}" value='{{$item->quantity}}'>
+                 
+
                 @endforeach
                 <hr>
                 <p>Total <span class="price" style="color:black; float:right;" ><b>${{$total}}</b></span></p>
@@ -107,17 +112,19 @@ function showShippingDetails() {
             <div class="col-md-4" id="shippingDetails" style='display:none;'>
                         <h3><b>Shipping Address</b></h3>
                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="John Doe"><br>
+                        <input type="text" id="fname" name="shippingFirstName" placeholder="John Doe"><br>
                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                        <input type="text" id="adr" name="address" placeholder="601 College St"><br>
+                        <input type="text" id="adr" name="shippingAddress" placeholder="601 College St"><br>
                         <label for="city"><i class="fa fa-institution"></i> City</label>
-                        <input type="text" id="city" name="city" placeholder="Clarksville"><br>
+                        <input type="text" id="city" name="shippingCity" placeholder="Clarksville"><br>
                         <label for="state">State</label>
-                        <input type="text" id="state" name="state" placeholder="TN"><br>
+                        <input type="text" id="state" name="shippingState" placeholder="TN"><br>
                         <label for="zip">Zip</label>
-                        <input type="text" id="zip" name="zip" placeholder="37040"><br>
+                        <input type="text" id="zip" name="shippingZip" placeholder="37040"><br>
                 </div>
 
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>
 
             </div>
         </div>
