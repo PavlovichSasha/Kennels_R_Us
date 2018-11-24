@@ -19,6 +19,7 @@ else{
 ?>
 
 
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -49,7 +50,7 @@ else{
                                     <input type="number" name="qty" min = "0" value='{{$item->quantity}}'>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="itemID" value="{{$item->id}}"> 
-                                    <input type="submit">
+                                    <input type="submit" value='update' class='btn btn-link'>
                                 </form>
                             </td>
                                 
@@ -58,7 +59,7 @@ else{
                             <td> <form action="{{ route('removeFromCart') }}" method='post'>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="itemID" value="{{$item->id}}"> 
-                                    <input type='submit' value='remove'>
+                                    <input type='submit' value='remove' class='btn btn-danger btn-sm'>
                                     </form>
                                 </td>
                         </tr>
@@ -69,6 +70,19 @@ else{
                             <td>Total:</td>
                             <td>{{$total}}</td>
                         </tr>
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><form action="{{ route('checkout') }}" method='get'>
+                                    <input type="submit" value='Checkout' class="btn btn-success">
+                                </form>
+                            </td>
+                            
+                        </tr>
+
                     </table>
                 </div>
             </div>

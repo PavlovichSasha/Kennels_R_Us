@@ -107,4 +107,29 @@ class productsController extends Controller {
             return redirect()->route('cart');
          }
     }
+
+
+    public function checkoutComplete(Request $request) {
+      
+        //dd($request); 
+
+         $productID = (int)$productID;
+        
+
+         if (Auth::check()) {
+             // Authentication passed...
+            
+             $userId = auth()->user()->id; // or any string represents user identifier
+             Cart::session($userId);
+         
+         return redirect()->route('invoice');
+     
+         
+         }else
+         {
+          
+            return redirect()->route('invoice');
+         }
+    }
+
 }
