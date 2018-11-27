@@ -3,6 +3,9 @@
 @section('content')
 <?php 
 
+
+
+
 if (Auth::check()) {
     $userId = auth()->user()->id;
     $items = Cart::session($userId)->getContent();

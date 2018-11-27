@@ -203,7 +203,16 @@ class productsController extends Controller {
 
     public function checkoutComplete(Request $request) {
       
-        dd($request); 
+     //   dd($request); 
+        $address = $request->input('address');
+        $state = $request->input('state');
+        $city = $request->input('city');
+        $zip = $request->input('zip');
+
+
+
+
+
         
          if (Auth::check()) {
              // Authentication passed...
@@ -211,13 +220,13 @@ class productsController extends Controller {
              $userId = auth()->user()->id; // or any string represents user identifier
              Cart::session($userId);
          
-         return redirect()->route('invoice');
+         return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
      
          
          }else
          {
           
-            return redirect()->route('invoice');
+            return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
          }
     }
 

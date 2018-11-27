@@ -13,7 +13,7 @@
                     <p class="card-text">suitable for very small dogs and cats. <br> $49.99</p>
                     <form action="{{ route('addToCart') }}" method='post'>
                         Quantity:
-                        <input type="number" name="qty" min = "0">
+                        <input type="number" name="qty" min = "1" value=1>
                         <input type="hidden" name="id" value=1>
                         <input type="hidden" name="name" value="Small Kennel">
                         <input type="hidden" name="price" value="49.99">
@@ -34,7 +34,7 @@
                     <p class="card-text">suitable for pets of the medium variety. <br> $59.99</p>
                     <form action="{{ route('addToCart') }}" method='post'>
                         Quantity:
-                        <input type="number" name="qty" min = "0">
+                        <input type="number" name="qty" min = "1" value=1>
                         <input type="hidden" name="id" value=2>
                         <input type="hidden" name="name" value="Standard Kennel">
                         <input type="hidden" name="price" value="59.99">
@@ -57,7 +57,7 @@
                     <p class="card-text">suitable for the largest pets. <br> $69.99</p>
                     <form action="{{ route('addToCart') }}" method='post'>
                         Quantity:
-                        <input type="number" name="qty" min = "0">
+                        <input type="number" name="qty" min = "1" value=1>
                         <input type="hidden" name="id" value=3>
                         <input type="hidden" name="name" value="Large Kennel">
                         <input type="hidden" name="price" value="69.99">

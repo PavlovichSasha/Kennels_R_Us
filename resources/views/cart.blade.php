@@ -39,7 +39,7 @@ else{
                             <th>Quantity</th> 
                             <th></th>
                             <th>Price</th>
-                            <th>total</th>
+                            <th></th>
                             <th></th>
                         </tr>
                         @foreach ($items->sortBy('id') as $item)
@@ -67,8 +67,9 @@ else{
                         <tr>
                             <td></td>
                             <td></td>
+                            <td></td>
                             <td>Total:</td>
-                            <td>{{$total}}</td>
+                            <td><b>{{$total}}</b></td>
                         </tr>
 
                         <tr>
