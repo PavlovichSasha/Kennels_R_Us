@@ -53,17 +53,17 @@ function showShippingDetails() {
         <div class="col-md-4">
             <h3><b>Billing Address</b></h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John Doe"><br>
+            <input type="text" id="fname" name="firstname" placeholder="John Doe" required><br>
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="apsu@apsu.edu"><br>
+            <input type="text" id="email" name="email" placeholder="apsu@apsu.edu" required><br>
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="601 College St"><br>
+            <input type="text" id="adr" name="address" placeholder="601 College St" required><br>
             <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="Clarksville"><br>
+            <input type="text" id="city" name="city" placeholder="Clarksville" required><br>
             <label for="state">State</label>
-            <input type="text" id="state" name="state" placeholder="TN"><br>
+            <input type="text" id="state" name="state" placeholder="TN" required><br>
             <label for="zip">Zip</label>
-            <input type="text" id="zip" name="zip" placeholder="37040"><br>
+            <input type="text" id="zip" name="zip" placeholder="37040" required><br>
         </div>
 
           <div class="col-md-4">
@@ -77,15 +77,30 @@ function showShippingDetails() {
                 </div>
 
                     <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="John Doe"><br>
+                    <input type="text" id="cname" name="cardname" placeholder="John Doe" required><br>
                     <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br>
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" maxlength='16' min='16' required><br>
                     <label for="expmonth">Exp Month</label>
-                    <input type="text" id="expmonth" name="expmonth" placeholder="December"><br>
+                        <select name="expmonth" id="expmonth">
+                            <option name="January" value="January">January</option>
+                            <option name="February" value="February">February</option>
+                            <option name="March" value="March">March</option>
+                            <option name="April" value="April">April</option>
+                            <option name="May" value='May'>May</option>
+                            <option name="June" value="June">June</option>
+                            <option name="July" value="July">July</option>
+                            <option name="August" value="August">August</option>
+                            <option name="September" value="September">September</option>
+                            <option name="October" value='October'>October</option>
+                            <option name="November" value="November">November</option>
+                            <option name="December" value="December">December</option>
+
+                        </select><br>
+                    <!-- <input type="text" id="expmonth" name="expmonth" placeholder="December" required><br> -->
                     <label for="expyear">Exp Year</label>
-                    <input type="text" id="expyear" name="expyear" placeholder="2018"><br>
+                    <input type="text" id="expyear" name="expyear" placeholder="2018" required maxlength='4'><br>
                     <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" placeholder="777"><br>
+                    <input type="text" id="cvv" name="cvv" placeholder="555" required maxlength='3'><br>
           
                     <label>
                         <input type="checkbox" checked="checked" id='checkbox' onclick='showShippingDetails()'> Shipping address same as billing

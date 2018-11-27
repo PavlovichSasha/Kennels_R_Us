@@ -203,7 +203,7 @@ class productsController extends Controller {
 
     public function checkoutComplete(Request $request) {
       
-     //   dd($request); 
+        //dd($request); 
         $address = $request->input('address');
         $state = $request->input('state');
         $city = $request->input('city');
