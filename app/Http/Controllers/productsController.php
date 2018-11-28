@@ -204,15 +204,53 @@ class productsController extends Controller {
     public function checkoutComplete(Request $request) {
       
         //dd($request); 
+        $name = $request->input('fname');
+        $firstName;
+        $lastName;
+        if (preg_match('/\s/',$name)){
+            $namePieces = explode(" ", $name, 2);
+            $firstName = $namePieces[0];
+            $lastName = $namePieces[1];
+        }
+        else {
+            $firstName = $name;
+            $lastName = $name;
+        }
+
         $address = $request->input('address');
         $state = $request->input('state');
         $city = $request->input('city');
         $zip = $request->input('zip');
 
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+
+        $shippingAddress = $request->input('shippingAddress');
+        $shippingState = $request->input('shippingState');
+        $shippingCity = $request->input('shippingCity');
+        $shippingZip = $request->input('shippingZip');
+
+        $fullAddress = $address . " "  . $state  . " " . $city . " " . $zip;
+        //dd($fullAddress);
+
+        if(!($shippingAddress == null )){
+
+            $shippingFullAddress = $shippingAddress . " " . $shippingState . " " . $shippingCity . " " . $shippingZip;
+
+            
+
+        }
 
 
 
-
+        DB::table('tblcustomer')->insertGetId([
+                    'LastName'=> $lastName,
+                    'firstName' => $firstName,
+                    'billingAddress' => $fullAddress, 
+                    'phone' => $phone,
+                    'email' => $email, 
+                    'ShippingAddress' => $shippingFullAddress
+         ]);
         
          if (Auth::check()) {
              // Authentication passed...
@@ -225,7 +263,6 @@ class productsController extends Controller {
          
          }else
          {
-          
             return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
          }
     }

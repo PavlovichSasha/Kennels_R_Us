@@ -53,7 +53,7 @@ function showShippingDetails() {
         <div class="col-md-4">
             <h3><b>Billing Address</b></h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John Doe" required><br>
+            <input type="text" id="fname" name="fname" placeholder="John Doe" required><br>
             <label for="email"><i class="fa fa-envelope"></i> Email</label>
             <input type="text" id="email" name="email" placeholder="apsu@apsu.edu" required><br>
             <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
@@ -64,6 +64,9 @@ function showShippingDetails() {
             <input type="text" id="state" name="state" placeholder="TN" required><br>
             <label for="zip">Zip</label>
             <input type="text" id="zip" name="zip" placeholder="37040" required><br>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="333-333-4444" required><br>
+            
         </div>
 
           <div class="col-md-4">
@@ -130,7 +133,7 @@ function showShippingDetails() {
             <div class="col-md-4" id="shippingDetails" style='display:none;'>
                         <h3><b>Shipping Address</b></h3>
                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="shippingFirstName" placeholder="John Doe"><br>
+                        <input type="text" id="fname" name="shippingFName" placeholder="John Doe"><br>
                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
                         <input type="text" id="adr" name="shippingAddress" placeholder="601 College St"><br>
                         <label for="city"><i class="fa fa-institution"></i> City</label>
