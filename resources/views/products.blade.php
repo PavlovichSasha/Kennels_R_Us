@@ -76,7 +76,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Custom Kennel</h5>
                     <p class="card-text">designed by you to support all your pets needs <br> $99.99</p>
-                    <a href = "/custom"><button style = "color: black">Click for Customization Options</button></a>
+                    <a href = "{{ route('custom') }}"><button style = "color: black">Click for Customization Options</button></a>
                 </div>
             </div>
         </div>

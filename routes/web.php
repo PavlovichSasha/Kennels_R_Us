@@ -50,5 +50,9 @@ Route::get('/about', function(){
 return view('about');
 })->name('about');
 
+Route::get('/reports', function(){
+    return view('reports');
+    })->name('reports');
+
 
 ?>
