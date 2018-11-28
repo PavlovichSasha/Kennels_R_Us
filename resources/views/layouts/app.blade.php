@@ -56,12 +56,14 @@
                             </li>
 
                             <?php
-                           if(Auth::check()){
+                            if(Auth::check()){
                             if(Auth::user()->admin == 1)
                                 {
-                                    ?>
-                                    <li class='nav-item'><a class='nav-link' href="{{ route('reports') }}">{{ __('Reports') }}</a></li>
-                                    <?php
+                            ?>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href="{{ route('reports') }}">{{ __('Reports') }}</a>
+                                    </li>
+                            <?php
                                 }   
                              }
                             ?>
