@@ -145,6 +145,30 @@ function showShippingDetails() {
                 </div>
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div id = "rating">
+                    <label>How was your experience with us today?</label>
+                    
+                    <div>
+                        <input type="radio" id="5" name="rating" value="excellent" checked>
+                        <label for="excellent">Excellent</label>
+                    </div>
+                    <div>    
+                        <input type="radio" id="4" name="rating" value="good">
+                        <label for="good">Good</label>
+                    </div>
+                    <div>    
+                        <input type="radio" id="3" name="rating" value="acceptable">
+                        <label for="acceptable">Acceptable</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="2" name="rating" value="marginal">
+                        <label for="marginal">Marginal</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="1" name="rating" value="poor">
+                        <label for="poor">Poor</label>
+                    </div>
+                </div>
                 </form>
 
             </div>

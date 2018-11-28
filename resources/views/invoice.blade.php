@@ -75,8 +75,6 @@ else{
                 {{$city}} <br>
                 {{$state}} {{$zip}} <br>
                 </p>
-
-
                 </div>
             </div>
         </div>

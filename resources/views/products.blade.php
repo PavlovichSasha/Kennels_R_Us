@@ -18,7 +18,7 @@
                         <input type="hidden" name="name" value="Small Kennel">
                         <input type="hidden" name="price" value="49.99">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit">
+                        <input type="submit" value="Add to Cart">
                     </form>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <input type="hidden" name="name" value="Standard Kennel">
                         <input type="hidden" name="price" value="59.99">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit">
+                        <input type="submit" value="Add to Cart">
                     </form>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         <input type="hidden" name="name" value="Large Kennel">
                         <input type="hidden" name="price" value="69.99">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="submit">
+                        <input type="submit" value="Add to Cart">
                     </form>  
                 </div>
             </div>
