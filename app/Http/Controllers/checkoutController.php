@@ -48,9 +48,16 @@ class checkoutController extends Controller {
             $shippingFullAddress = $shippingAddress . " " . $shippingState . " " . $shippingCity . " " . $shippingZip;
         } else $shippingFullAddress = $address . " "  . $state  . " " . $city . " " . $zip;
 
+         if (Auth::check()) {
+             // Authentication passed...
+            
+             $userId = auth()->user()->id;
+             $items = Cart::session($userId)->getContent();
+             $total = Cart::session($userId)->getTotal();
+
+            if(Auth::user()->customerId == 0){
                 
-        //inserting the new customer
-        DB::table('tblcustomer')->insertGetId([
+                DB::table('tblcustomer')->insertGetId([
                     'LastName'=> $lastName,
                     'firstName' => $firstName,
                     'billingAddress' => $fullAddress, 
@@ -58,36 +65,34 @@ class checkoutController extends Controller {
                     'email' => $email, 
                     'ShippingAddress' => $shippingFullAddress,
                     'serviceAnswer' => $rating
-         ]); 
-            //getting cust id
-         $customerId = DB::table('tblcustomer')
-         ->where('LastName', '=', $lastName)
-            ->where('firstName' , '=',$firstName)
-            ->where('billingAddress' , '=', $fullAddress) 
-            ->where('phone' , '=', $phone)
-            ->where( 'email' , '=', $email) 
-            ->where('ShippingAddress' , '=', $shippingFullAddress)
-            ->where('serviceAnswer' , '=', $rating)
-            ->pluck('CustomerID')
-            ->first();
-        
-        
+                ]); 
+                    //getting cust id
+                $customerId = DB::table('tblcustomer')
+                ->where('LastName', '=', $lastName)
+                    ->where('firstName' , '=',$firstName)
+                    ->where('billingAddress' , '=', $fullAddress) 
+                    ->where('phone' , '=', $phone)
+                    ->where( 'email' , '=', $email) 
+                    ->where('ShippingAddress' , '=', $shippingFullAddress)
+                    ->where('serviceAnswer' , '=', $rating)
+                    ->pluck('CustomerID')
+                    ->first();
 
-         if (Auth::check()) {
-             // Authentication passed...
-            
-             $userId = auth()->user()->id;
-             $items = Cart::session($userId)->getContent();
-             $total = Cart::session($userId)->getTotal();
+                    DB::table('users')->where('id', $userId)->update(['Customerid' => $customerId]);
+
+            }else{
+                $customerId = Auth::user()->customerId;
+                ($customerId);
+            }
+
              $date = date("Y-m-d h:i:s");
              
             db::table('tblorder')->insertGetId([
                 'CustomerID'=> $customerId,
                 'orderDate' => $date,
-                'totalOrderPrice' => $total 
-                
-     ]); 
-                //dd($customerId);
+                'totalOrderPrice' => $total               
+            ]); 
+
 
             $orderID = DB::table('tblorder')
                 ->where('CustomerID', '=', $customerId)
@@ -120,24 +125,20 @@ class checkoutController extends Controller {
                     }
 
                 if((!($item->id == 1)) && (!($item->id == 2)) || (!($item->id == 3))){
-                    $i = 0;
                     $productIdTemp = ltrim($productIdTemp, $productIdTemp[0]);
                     
-
-
                     while(!(strlen($productIdTemp) == 0)){
                         
                         if($productIdTemp[0] == '6'){
-                            $features[$i] = 6;
+                            $features[0] = 6;
                         }else if($productIdTemp[0] == '7'){
-                            $features[$i] = 7;
+                            $features[1] = 7;
                         }else if($productIdTemp[0] == '8'){
-                            $features[$i] = 8;
+                            $features[2] = 8;
                         }else if($productIdTemp[0] == '9'){
-                            $features[$i] = 9;
+                            $features[3] = 9;
                         }
 
-                        $i = $i + 1;
                         $productIdTemp = ltrim($productIdTemp, $productIdTemp[0]);
 
                     } 
@@ -154,14 +155,22 @@ class checkoutController extends Controller {
                     'feature4'=>  $features[3]
                     ]);
                 
+                   $currentQuantity = db::table('tblproducts')
+                    ->where('productType' , '=', $size)
+                    ->pluck('unitsinstock')
+                    ->first();
 
-            }
+                db::table('tblproducts')
+                ->where('productType' , '=', $size)
+                ->update(['unitsinstock' => $currentQuantity - $quantity]);
+                    
+            }//end of foreach
 
-            /* WIP for saving autofilling customers information
-             DB::table('users')->where('id', $userId)->update(['Customerid' => $customerId]);
-             */
+            
+            Cart::session($userId)->clear();
+        
          
-         return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
+         return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip], ['orderID', $orderID]);
      
          
          }else
@@ -169,12 +178,112 @@ class checkoutController extends Controller {
             $items = Cart::getContent();
             $total = Cart::getTotal(); 
 
+                //inserting the new customer
+            DB::table('tblcustomer')->insertGetId([
+                'LastName'=> $lastName,
+                'firstName' => $firstName,
+                'billingAddress' => $fullAddress, 
+                'phone' => $phone,
+                'email' => $email, 
+                'ShippingAddress' => $shippingFullAddress,
+                'serviceAnswer' => $rating
+            ]); 
+                //getting cust id
+            $customerId = DB::table('tblcustomer')
+            ->where('LastName', '=', $lastName)
+                ->where('firstName' , '=',$firstName)
+                ->where('billingAddress' , '=', $fullAddress) 
+                ->where('phone' , '=', $phone)
+                ->where( 'email' , '=', $email) 
+                ->where('ShippingAddress' , '=', $shippingFullAddress)
+                ->where('serviceAnswer' , '=', $rating)
+                ->pluck('CustomerID')
+                ->first();
+
+                $date = date("Y-m-d h:i:s");
+             
+            db::table('tblorder')->insertGetId([
+                'CustomerID'=> $customerId,
+                'orderDate' => $date,
+                'totalOrderPrice' => $total               
+            ]); 
 
 
+            $orderID = DB::table('tblorder')
+                ->where('CustomerID', '=', $customerId)
+                ->where('orderDate' , '=', $date)
+                ->pluck('orderID')
+                ->first();
+                
+                
 
+             foreach ($items->sortBy('id') as $item){
 
-            
-            return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
+                $productIdTemp = $item->id;
+                $productIdTemp = (string)$productIdTemp;
+                $size;
+                $quantity = $item->quantity;
+                $features = array();
+                $features[0] = null;
+                $features[1] = null;
+                $features[2] = null;
+                $features[3] = null;
+
+                
+
+                if($productIdTemp[0] == '1'){
+                    $size = 'Small';
+                    }else if($productIdTemp[0] == '2'){
+                        $size = 'Standard';
+                    }else if($productIdTemp[0] == '3'){
+                        $size = 'Large';
+                    }
+
+                if((!($item->id == 1)) && (!($item->id == 2)) || (!($item->id == 3))){
+                    $productIdTemp = ltrim($productIdTemp, $productIdTemp[0]);
+                    
+                    while(!(strlen($productIdTemp) == 0)){
+                        
+                        if($productIdTemp[0] == '6'){
+                            $features[0] = 6;
+                        }else if($productIdTemp[0] == '7'){
+                            $features[1] = 7;
+                        }else if($productIdTemp[0] == '8'){
+                            $features[2] = 8;
+                        }else if($productIdTemp[0] == '9'){
+                            $features[3] = 9;
+                        }
+
+                        $productIdTemp = ltrim($productIdTemp, $productIdTemp[0]);
+
+                    } 
+                }
+
+                db::table('tblorderdetails')
+                ->insert([
+                    'productType'=>  $size,
+                    'OrderID'=>  $orderID,
+                    'quantity'=>  $quantity,
+                    'feature1'=>  $features[0],
+                    'feature2'=>  $features[1],
+                    'feature3'=>  $features[2],
+                    'feature4'=>  $features[3]
+                    ]);
+                
+                   $currentQuantity = db::table('tblproducts')
+                    ->where('productType' , '=', $size)
+                    ->pluck('unitsinstock')
+                    ->first();
+
+                db::table('tblproducts')
+                ->where('productType' , '=', $size)
+                ->update(['unitsinstock' => $currentQuantity - $quantity]);
+                    
+            }//end of foreach
+
+            Cart::clear();
+
+            return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip], ['orderID', $orderID]);
          }
     }
 
