@@ -18,38 +18,38 @@ class reportsController extends Controller {
         switch($case) {
             case 1:
             $tableName = 'tblcustomer';
-            $data = DB::table($tableName)->get();
-            return view('reports')->with($data);
+            $results = DB::table($tableName)->get();
+            return view('reports')->with($results);
             break;
 
             case 2:
             $tableName = 'tblfeatures';
-            $data = DB::table($tableName)->get();
-            return view('reports')->with($data);
+            $results = DB::table($tableName)->get();
+            return view('reports')->with($results);
             break;
 
             case 3:
             $tableName = 'tblorder';
-            $data = DB::table($tableName)->get();
-            return view('reports')->with($data);
+            $results = DB::table($tableName)->get();
+            return view('reports')->with($results);
             break;
 
             case 4:
             $tableName = 'tblproducts';
-            $data = DB::table($tableName)->get();
-            return view('reports')->with($data);
+            $results = DB::table($tableName)->get();
+            return view('reports')->with($results);
             break;
 
             case 5:
             $tableName = 'tblusers';
-            $data = DB::table($tableName)->get();
-            return view('reports')->with($data);
+            $results = DB::table($tableName)->get();
+            return view('reports')->with($results);
             break;
 
             default:
             $tableName = 'tblcustomer';
-            $data = DB::table($tableName)->get();
-            return view('reports')->with($data);
+            $results = DB::table($tableName)->get();
+            return view('reports')->with($results);
         }
 
     }

@@ -13,9 +13,75 @@
     </div>
     <div>
     <tr>
-        @foreach($data as $d)
-          <td>$d</td>
-        @endforeach
+        <?php
+        $q = intval($_GET['q']);        
+        //tblcustomer option
+        if ($q == 1) {
+        echo "<table>";
+        foreach ($results as $row) : 
+            echo "<tr>";
+            echo "<td>" . $row['CustomerID'] . "</td>";
+            echo "<td>" . $row['LastName'] . "</td>";
+            echo "<td>" . $row['FirstName'] . "</td>";
+            echo "<td>" . $row['Address'] . "</td>";
+            echo "<td>" . $row['Phone'] . "</td>";
+            echo "<td>" . $row['Email'] . "</td>";
+            echo "</tr>";
+          endforeach;
+        echo "</table>";
+
+        }else if($q == 2) {
+          echo "<table>";
+          foreach ($results as $row) : 
+            echo "<tr>";
+            echo "<td>" . $row['FeatureID'] . "</td>";
+            echo "<td>" . $row['Price'] . "</td>";
+            echo "<td>" . $row['Description'] . "</td>";
+            echo "</tr>";
+          endforeach;
+          
+          echo "</table>";	
+        }else if ($q == 3) {
+          echo "<table>";
+          foreach ($results as $row) : 
+            echo "<tr>";
+            echo "<td>" . $row['OrderID'] . "</td>";
+            echo "<td>" . $row['CustomerID'] . "</td>";
+            echo "<td>" . $row['OrderDate'] . "</td>";
+            echo "<td>" . $row['TotalOrderPrice'] . "</td>";
+            echo "</tr>";
+          endforeach;
+          echo "</table>";
+
+        }else if ($q == 4) {
+          echo "<table>";
+          foreach ($results as $row) : 
+            echo "<tr>";
+            echo "<td>" . $row['CustomerID'] . "</td>";
+            echo "<td>" . $row['LastName'] . "</td>";
+            echo "<td>" . $row['FirstName'] . "</td>";
+            echo "<td>" . $row['Address'] . "</td>";
+            echo "<td>" . $row['Phone'] . "</td>";
+            echo "<td>" . $row['Email'] . "</td>";
+            echo "</tr>";
+          endforeach;
+          echo "</table>";
+
+        }else if ($q == 5) {
+          echo "<table>";
+          foreach ($results as $row) : 
+            echo "<tr>";
+            echo "<td>" . $row['CustomerID'] . "</td>";
+            echo "<td>" . $row['LastName'] . "</td>";
+            echo "<td>" . $row['FirstName'] . "</td>";
+            echo "<td>" . $row['Address'] . "</td>";
+            echo "<td>" . $row['Phone'] . "</td>";
+            echo "<td>" . $row['Email'] . "</td>";
+            echo "</tr>";
+          endforeach;
+          echo "</table>";
+          }
+        ?>
     </tr> 
     </div>
     </div>
