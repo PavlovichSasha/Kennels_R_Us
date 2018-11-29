@@ -25,7 +25,7 @@ Route::post('/update', 'productsController@updateCart')->name('updateCart');
 
 Route::post('/remove', 'productsController@removeFromCart')->name('removeFromCart');
 
-Route::post('/checkoutComplete', 'productsController@checkoutComplete')->name('checkoutComplete');
+Route::post('/checkoutComplete', 'checkoutController@checkoutComplete')->name('checkoutComplete');
 
 Route::post('/customAdd', 'productsController@customAddCart')->name('customAddCart');
 
