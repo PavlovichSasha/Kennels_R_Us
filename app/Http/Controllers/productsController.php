@@ -224,6 +224,7 @@ class productsController extends Controller {
 
         $email = $request->input('email');
         $phone = $request->input('phone');
+        $rating = $request->input('rating');
 
         $shippingAddress = $request->input('shippingAddress');
         $shippingState = $request->input('shippingState');
@@ -243,20 +244,42 @@ class productsController extends Controller {
 
 
 
+                
+
+                
+
         DB::table('tblcustomer')->insertGetId([
                     'LastName'=> $lastName,
                     'firstName' => $firstName,
                     'billingAddress' => $fullAddress, 
                     'phone' => $phone,
                     'email' => $email, 
-                    'ShippingAddress' => $shippingFullAddress
-         ]);
+                    'ShippingAddress' => $shippingFullAddress,
+                    'serviceAnswer' => $rating
+         ]); 
         
          if (Auth::check()) {
              // Authentication passed...
             
-             $userId = auth()->user()->id; // or any string represents user identifier
-             Cart::session($userId);
+            $userId = auth()->user()->id; // or any string represents user identifier
+           
+           
+            /* WIP for saving autofilling customers information
+            $customerId = DB::table('tblcustomer')->select('CustomerID')->where(
+                'LastName', '=', $lastName)
+                ->where('firstName' , '=',$firstName)
+                ->where('billingAddress' , '=', $fullAddress) 
+                ->where('phone' , '=', $phone)
+                ->where( 'email' , '=', $email) 
+                ->where('ShippingAddress' , '=', $shippingFullAddress)
+                ->where('serviceAnswer' , '=', $rating)->first();
+
+                dd($customerId);
+
+             DB::table('users')->where('id', $userId)->update(['Customerid' => $customerId]);
+
+
+             */
          
          return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
      
