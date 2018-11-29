@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\reportsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +31,6 @@ Route::post('/checkoutComplete', 'productsController@checkoutComplete')->name('c
 
 Route::post('/customAdd', 'productsController@customAddCart')->name('customAddCart');
 
-
 Route::get('/products', function(){
 return view('products');
 })->name('products');
@@ -53,6 +54,5 @@ return view('about');
 Route::get('/reports', function(){
     return view('reports');
     })->name('reports');
-
-
+Route::get('reports', 'reportsController@reportsTables');
 ?>
