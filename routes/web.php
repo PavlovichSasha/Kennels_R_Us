@@ -51,8 +51,10 @@ Route::get('/about', function(){
 return view('about');
 })->name('about');
 
+
 Route::get('/reports', function(){
     return view('reports');
     })->name('reports');
-Route::post('/reports', 'reportsController@reportsTables')->name('reportsTables');
+
+Route::get('/reports', 'reportsController@reportsTables')->name('reports');
 ?>

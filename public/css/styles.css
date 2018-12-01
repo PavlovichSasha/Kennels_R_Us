@@ -67,6 +67,23 @@ main p{
 	width: 90%;
 	height: 90%;
 }
+
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th{
+    border: 1px solid #341d2d;
+	text-align: center;
+}
+th{
+	background-color: #e7ba26; 
+}
+tr:nth-child(even){
+    background-color: rgb(152, 97, 206);
+}
+
 /*HEADER*/
 header {
 	text-align: center;

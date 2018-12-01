@@ -19,11 +19,8 @@ class reportsController extends Controller {
         }
         switch($case) {
             case 1:
-            $tableName = 'tblcustomer';
-            $results = DB::table($tableName)
-            ->select('*')
-            ->get();
-            return view::make('/reports')->with(array($results));
+            $results = DB::table('tblcustomer')->get();
+            return view('/reports', compact('results'));
             break;
 
             case 2:
@@ -31,7 +28,7 @@ class reportsController extends Controller {
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view::make('/reports')->with(array($results));
+            return view('/reports', compact('results'));
             break;
 
             case 3:
@@ -39,7 +36,7 @@ class reportsController extends Controller {
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view::make('/reports')->with(array($results));
+            return view('/reports', compact('results'));
             break;
 
             case 4:
@@ -47,15 +44,15 @@ class reportsController extends Controller {
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view::make('/reports')->with(array($results));
+            return view('/reports', compact('results'));
             break;
 
             case 5:
-            $tableName = 'tblusers';
+            $tableName = 'users';
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view::make('/reports')->with(array($results));
+            return view('/reports', compact('results'));
             break;
 
             default:
@@ -63,7 +60,7 @@ class reportsController extends Controller {
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view::make('/reports')->with(array($results));
+            return view('/reports', compact('results'));
         }
 
     }
