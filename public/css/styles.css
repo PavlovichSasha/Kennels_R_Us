@@ -62,6 +62,27 @@ main p{
 	margin: 2%;
 	border: 2px solid #47127D;
 }
+#product{
+	margin-top: 5%;
+	width: 90%;
+	height: 90%;
+}
+
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th{
+    border: 1px solid #341d2d;
+	text-align: center;
+}
+th{
+	background-color: #e7ba26; 
+}
+tr:nth-child(even){
+    background-color: rgb(152, 97, 206);
+}
 
 /*HEADER*/
 header {
@@ -110,7 +131,7 @@ footer{
 /*LINKS*/
 /* unvisited link */
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 a:link {
     color: #fae474;
@@ -126,4 +147,15 @@ a:hover {
 /* selected link */
 a:active {
     color: #341d2d;
+}
+
+/* Filters */
+.filters{
+	border: 1px solid black;
+	padding: 5px;
+	background-color:#341d2d;
+}
+.filters:hover{
+	background-color: #6F69C1;
+	color: #fae474;
 }

@@ -54,7 +54,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
                             </li>
-
+                            <li class='nav-item'>
+                                        <a class='nav-link' href="{{ route('reports') }}">{{ __('Reports') }}</a>
+                                    </li>
                             <?php
                             if(Auth::check()){
                             if(Auth::user()->admin == 1)

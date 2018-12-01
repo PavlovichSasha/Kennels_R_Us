@@ -2,11 +2,9 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        
-        
+    <div class="row justify-content-center">  
         <div class="col-4">
-            <div class="card">
+            <div id = "product" class="card">
             <img class="product-pic" src='img/kennel-1.jpg' alt="Small Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Small Kennel</h5>
@@ -19,7 +17,7 @@
                         <input type="hidden" name="price" value="49.99">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="submit" value="Add to Cart">
-                    </form>
+                    </form><br>
                 </div>
             </div>
         </div>
@@ -27,7 +25,7 @@
         <!-- spacing -->
         </div>
         <div class="col-4">
-            <div class="card">
+            <div id = "product" class="card">
             <img class="product-pic" src='img/kennel-2.jpg' alt="Standard Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Standard Kennel</h5>
@@ -45,12 +43,9 @@
             </div>
         </div>
   </div>
-
   <div class="row justify-content-center">
-        
-        
         <div class="col-4">
-            <div class="card">
+            <div id = "product" class="card">
             <img class="product-pic" src='img/kennel-3.jpg' alt="Large Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Large Kennel</h5>
@@ -71,8 +66,8 @@
         <!-- spacing -->
         </div>
         <div class="col-4">
-            <div class="card">
-            <img class="product-pic" src='img/kennel-custom.jpg' alt="Medium Kennel card">
+            <div id = "product" class="card">
+            <img class="product-pic" src='img/kennel-custom.jpg' alt="Custom Kennel card">
                 <div class="card-body">
                     <h5 class="card-title">Custom Kennel</h5>
                     <p class="card-text">designed by you to support all your pets needs <br> $99.99</p>
