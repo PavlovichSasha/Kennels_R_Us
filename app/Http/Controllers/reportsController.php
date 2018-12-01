@@ -19,7 +19,9 @@ class reportsController extends Controller {
         }
         switch($case) {
             case 1:
-            $results = DB::table('tblcustomer')->get();
+            $tableName = 'tblcustomer';
+            $results = DB::table($tableName)
+            ->get();
             return view('/reports', compact('results'));
             break;
 
