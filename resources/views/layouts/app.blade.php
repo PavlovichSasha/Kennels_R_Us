@@ -54,9 +54,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
                             </li>
-                            <li class='nav-item'>
-                                        <a class='nav-link' href="{{ route('reports') }}">{{ __('Reports') }}</a>
-                                    </li>
                             <?php
                             if(Auth::check()){
                             if(Auth::user()->admin == 1)
@@ -112,7 +109,7 @@
         </main>
     </div>
     <footer>
-        <p class = "copyright">Kennels R Us since 2018</p>
+        <p>Kennels R Us since 2018</p>
     </footer>
 </body>
 </html>

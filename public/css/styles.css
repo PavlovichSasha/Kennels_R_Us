@@ -76,12 +76,16 @@ table{
 td, th{
     border: 1px solid #341d2d;
 	text-align: center;
+	font-weight: bold;
 }
 th{
 	background-color: #e7ba26; 
 }
 tr:nth-child(even){
-    background-color: rgb(152, 97, 206);
+    background-color: rgb(166, 124, 207);
+}
+tr:nth-child(odd){
+    background-color: rgb(129, 51, 206);
 }
 
 /*HEADER*/
@@ -126,6 +130,7 @@ footer{
 	text-align: right;
 	border-top: 1px solid #E7BA22;
 	background-color: #3B69A0;
+	padding-right: 10px;
 }
 
 /*LINKS*/
@@ -153,9 +158,17 @@ a:active {
 .filters{
 	border: 1px solid black;
 	padding: 5px;
-	background-color:#341d2d;
+	color: black;
+	border-radius: 25px;
+	background-color:rgb(190, 99, 14);
 }
 .filters:hover{
 	background-color: #6F69C1;
-	color: #fae474;
+	color: #645402;
+}
+.filters:visited{
+	color: rgb(6, 0, 85);
+}
+.filters:active{
+	background-color: #341d2d;
 }

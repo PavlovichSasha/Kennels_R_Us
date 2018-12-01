@@ -35,10 +35,12 @@ class reportsController extends Controller {
 
             case 3:
             $tableName = 'tblorder';
+            $orderCount = DB::table($tableName)->count();
+            $orderPrice = DB::table($tableName)->add();
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view('/reports', compact('results'));
+            return view('/reports', compact('orderCount', 'results', 'orderPrice'));
             break;
 
             case 4:

@@ -40,7 +40,6 @@ else{
                             <th></th>
                             <th>Price</th>
                             <th></th>
-                            <th></th>
                         </tr>
                         @foreach ($items->sortBy('id') as $item)
                         <tr>
@@ -50,7 +49,7 @@ else{
                                     <input type="number" name="qty" min = "0" value='{{$item->quantity}}'>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="itemID" value="{{$item->id}}"> 
-                                    <input type="submit" value='update' class='btn btn-link'>
+                                    <input type="submit" value='update' class='filters'>
                                 </form>
                             </td>
                                 

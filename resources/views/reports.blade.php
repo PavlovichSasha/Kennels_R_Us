@@ -33,6 +33,7 @@
             $q = 0;
         }
         ?>
+        {{-- tblcustomer --}}
         @if ($q == 1)
           <table>
           <tr>
@@ -55,6 +56,7 @@
           @endforeach
           </table>
         @endif
+        {{-- tblfeatures --}}
         @if($q == 2)
           <table>
           <tr>
@@ -71,46 +73,43 @@
           @endforeach
           </table>
         @endif
+        {{--tblorder--}}
         @if ($q == 3)
           <table>
           <tr>
-            <th>Order ID</th>
+            <th>Total Number of Orders</th>
             <th>Customer ID</th>
-            <th>Order Date</th>
-            <th>Total Order Price</th>
+            <th>Total Orders Price</th>
           </tr>
-          @foreach ($results as $row)
+         @foreach ($results as $row)
             <tr>
-            <td> {{ $row->OrderID }} </td>
+            <td> {{ $orderCount }} </td>
             <td> {{ $row->CustomerID }} </td>
-            <td> {{ $row->OrderDate }} </td>
             <td> {{ $row->TotalOrderPrice }} </td>
             </tr>
           @endforeach
           </table>
         @endif
+        {{--tblproducts--}}
         @if ($q == 4) 
           <table>
           <tr>
-            <th>Customer ID</th>
-            <th>Last Name</th>
-            <th>First Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Email</th>
+            <th>Product ID</th>
+            <th>Product Type</th>
+            <th>Wholesale Price</th>
+            <th>Units In Stock</th>
           </tr>
           @foreach ($results as $row)
             <tr>
-            <td> {{ $row->CustomerID }} </td>
-            <td> {{ $row->LastName }} </td>
-            <td> {{ $row->FirstName }} </td>
-            <td> {{ $row->Address }} </td>
-            <td> {{ $row->Phone }} </td>
-            <td> {{ $row->Email }} </td>
+            <td> {{ $row->ProductID }} </td>
+            <td> {{ $row->ProductType }} </td>
+            <td> {{ $row->WholesalePrice }} </td>
+            <td> {{ $row->UnitsInStock }} </td>
             </tr>
           @endforeach
           </table>
         @endif
+        {{--users--}}
         @if ($q == 5)
           <table>
           <tr>
