@@ -219,10 +219,10 @@ class productsController extends Controller {
             
              $userId = auth()->user()->id; // or any string represents user identifier
              Cart::session($userId);
-         
+
          return view('invoice')->with(['address', $address],['state', $state],['city', $city],['zip', $zip]);
-     
          
+
          }else
          {
           

@@ -19,36 +19,35 @@ class reportsController extends Controller {
         }
         switch($case) {
             case 1:
-            $tableName = 'tblcustomer';
+            $tableName = 'tblCustomer';
             $results = DB::table($tableName)
+            ->select('*')
             ->get();
-            return view('/reports', compact('results'));
+            return view('reports', compact('results'));
             break;
 
             case 2:
-            $tableName = 'tblfeatures';
+            $tableName = 'tblFeatures';
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view('/reports', compact('results'));
+            return view('reports', compact('results'));
             break;
 
             case 3:
-            $tableName = 'tblorder';
-            $orderCount = DB::table($tableName)->count();
-            $orderPrice = DB::table($tableName)->add();
+            $tableName = 'tblOrder';
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view('/reports', compact('orderCount', 'results', 'orderPrice'));
+            return view('reports', compact('results'));
             break;
 
             case 4:
-            $tableName = 'tblproducts';
+            $tableName = 'Products';
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view('/reports', compact('results'));
+            return view('reports', compact('results'));
             break;
 
             case 5:
@@ -56,15 +55,15 @@ class reportsController extends Controller {
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view('/reports', compact('results'));
+            return view('reports', compact('results'));
             break;
 
             default:
-            $tableName = 'tblcustomer';
+            $tableName = 'tblCustomer';
             $results = DB::table($tableName)
             ->select('*')
             ->get();
-            return view('/reports', compact('results'));
+            return view('reports', compact('results'));
         }
 
     }

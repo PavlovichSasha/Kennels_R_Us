@@ -5,23 +5,13 @@
     <div>
      <div >
         <label>Filters:</label>
-        <a class = "filters" href = "/reports?q=1">Customers</a>
-        <a class = "filters" href = "/reports?q=2">Features</a>
-        <a class = "filters" href = "/reports?q=3">Order Details</a>
-        <a class = "filters" href = "/reports?q=4">Products</a>
-        <a class = "filters" href = "/reports?q=5">Users</a>
+        <a class = "filters" href = "/public/reports?q=1">Customers</a>
+        <a class = "filters" href = "/public/reports?q=2">Features</a>
+        <a class = "filters" href = "/public/reports?q=3">Orders</a>
+        <a class = "filters" href = "/public/reports?q=4">Products</a>
+        <a class = "filters" href = "/public/reports?q=5">Users</a>
     </div>
-    <form name="date" method="post">
-      <div>
-      <label>Start Date: </label>
-        <input type = "date" name = "start_date" id = "start_date">
-      </div>
-      <div>
-      <label>End Date: </label>
-        <input type = "date" name = "end_date" id = "end_date">  
-      </div>
-      <input type="submit">
-    </form>
+    
     <br>
     <div>
         <?php
@@ -40,18 +30,20 @@
               <th>Customer ID</th>
               <th>Last Name</th>
               <th>First Name</th>
-              <th>Address</th>
+              <th>Billing Address</th>
               <th>Phone</th>
               <th>Email</th>
+              <th>Shipping Address</th>
             </tr>
           @foreach ($results as $row)
               <tr>
-              <td> {{ $row->CustomerID }} </td>
-              <td> {{ $row->LastName }} </td>
-              <td> {{ $row->FirstName }} </td>
-              <td> {{ $row->Address }} </td>
-              <td> {{ $row->Phone }} </td>
-              <td> {{ $row->Email }} </td>
+                <td> {{ $row->CustomerID }} </td>
+                <td> {{ $row->LastName }} </td>
+                <td> {{ $row->FirstName }} </td>
+                <td> {{ $row->billingAddress }} </td>
+                <td> {{ $row->Phone }} </td>
+                <td> {{ $row->Email }} </td>
+                <td> {{ $row->ShippingAddress }} </td>
               </tr>
           @endforeach
           </table>
@@ -61,14 +53,16 @@
           <table>
           <tr>
             <th>Feature ID</th>
-            <th>Price</th>
+            <th>Feature Name</th>
             <th>Description</th>
+            <th>Units In Stock</th>
           </tr>
           @foreach ($results as $row)
             <tr>
-            <td> {{ $row->FeatureID }} </td>
-            <td> {{ $row->Price }} </td>
-            <td> {{ $row->Description }} </td>
+              <td> {{ $row->CustomFeatureID }} </td>
+              <td> {{ $row->CustomFeatureName }} </td>
+              <td> {{ $row->FeatureDescription }} </td>
+              <td> {{ $row->QuantityInStock  }} </td>
             </tr>
           @endforeach
           </table>
@@ -77,15 +71,17 @@
         @if ($q == 3)
           <table>
           <tr>
-            <th>Total Number of Orders</th>
+            <th>Order ID</th>
             <th>Customer ID</th>
+            <th>Order Date</th>
             <th>Total Orders Price</th>
           </tr>
          @foreach ($results as $row)
             <tr>
-            <td> {{ $orderCount }} </td>
-            <td> {{ $row->CustomerID }} </td>
-            <td> {{ $row->TotalOrderPrice }} </td>
+              <td> {{ $row->OrderID }} </td>
+              <td> {{ $row->CustomerID }} </td>
+              <td> {{ $row->OrderDate }} </td>
+              <td> {{ $row->TotalOrderPrice }} </td>
             </tr>
           @endforeach
           </table>
@@ -95,16 +91,14 @@
           <table>
           <tr>
             <th>Product ID</th>
-            <th>Product Type</th>
-            <th>Wholesale Price</th>
+            <th>Price</th>
             <th>Units In Stock</th>
           </tr>
           @foreach ($results as $row)
             <tr>
-            <td> {{ $row->ProductID }} </td>
-            <td> {{ $row->ProductType }} </td>
-            <td> {{ $row->WholesalePrice }} </td>
-            <td> {{ $row->UnitsInStock }} </td>
+              <td> {{ $row->ProductID }} </td>
+              <td> {{ $row->Price }} </td>
+              <td> {{ $row->QuantityInStock }} </td>
             </tr>
           @endforeach
           </table>
@@ -116,16 +110,16 @@
             <th>User ID</th>
             <th>User Name</th>
             <th>Email</th>
+            <th>Admin</th>
             <th>Created Date</th>
-            <th>Last Date Updated</th>
           </tr>
           @foreach ($results as $row)
             <tr>
-            <td> {{ $row->id }} </td>
-            <td> {{ $row->name }} </td>
-            <td> {{ $row->email }} </td>
-            <td> {{ $row-> created_at}} </td>
-            <td> {{ $row->updated_at }} </td>
+              <td> {{ $row->id }} </td>
+              <td> {{ $row->name }} </td>
+              <td> {{ $row->email }} </td>
+              <td> {{ $row->admin}} </td>
+              <td> {{ $row->created_at }} </td>
             </tr>
           @endforeach
           </table>
