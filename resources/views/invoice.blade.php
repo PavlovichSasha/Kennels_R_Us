@@ -19,10 +19,15 @@ if (Auth::check()) {
     $userId = auth()->user()->id;
     $items = Cart::session($userId)->getContent();
     $total = Cart::session($userId)->getTotal();
+
+    Cart::session($userId)->clear();
 }
 else{
     $items = Cart::getContent();
     $total = Cart::getTotal(); 
+
+
+    Cart::clear();
 }
 
 ?>
