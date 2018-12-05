@@ -19,7 +19,7 @@ class reportsController extends Controller {
         }
         switch($case) {
             case 1:
-            $tableName = 'tblcustomer';
+            $tableName = 'products';
             $results = DB::table($tableName)
             ->get();
             return view('/reports', compact('results'));
@@ -42,7 +42,7 @@ class reportsController extends Controller {
             break;
 
             case 4:
-            $tableName = 'tblproducts';
+            $tableName = 'tblcustomer';
             $results = DB::table($tableName)
             ->select('*')
             ->get();
@@ -51,6 +51,23 @@ class reportsController extends Controller {
 
             case 5:
             $tableName = 'users';
+            $results = DB::table($tableName)
+            ->select('*')
+            ->get();
+            return view('/reports', compact('results'));
+            break;
+
+
+            case 6:
+            $tableName = 'tblfeaturedetails';
+            $results = DB::table($tableName)
+            ->select('*')
+            ->get();
+            return view('/reports', compact('results'));
+            break;
+
+            case 7:
+            $tableName = 'tblorderdetails';
             $results = DB::table($tableName)
             ->select('*')
             ->get();

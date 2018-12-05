@@ -58,7 +58,7 @@ class checkoutController extends Controller {
 
             if(Auth::user()->customerId == 0){
                 
-                DB::table('tblCustomer')->insertGetId([
+                DB::table('tblcustomer')->insertGetId([
                     'LastName'=> $lastName,
                     'firstName' => $firstName,
                     'billingAddress' => $fullAddress, 
@@ -68,7 +68,7 @@ class checkoutController extends Controller {
                     'serviceAnswer' => $rating
                 ]); 
                     //getting cust id
-                $customerId = DB::table('tblCustomer')
+                $customerId = DB::table('tblcustomer')
                 ->where('LastName', '=', $lastName)
                     ->where('firstName' , '=',$firstName)
                     ->where('billingAddress' , '=', $fullAddress) 
@@ -88,14 +88,14 @@ class checkoutController extends Controller {
 
              $date = date("Y-m-d h:i:s");
              
-            db::table('tblOrder')->insertGetId([
+            db::table('tblorder')->insertGetId([
                 'CustomerID'=> $customerId,
                 'orderDate' => $date,
                 'totalOrderPrice' => $total               
             ]);  
 
 
-            $orderID = DB::table('tblOrder')
+            $orderID = DB::table('tblorder')
                 ->where('CustomerID', '=', $customerId)
                 ->where('orderDate' , '=', $date)
                 ->pluck('orderID')
@@ -199,12 +199,12 @@ class checkoutController extends Controller {
                     'feature4'=>  $features[3]
                     ]);
                         
-                   $currentQuantity = db::table('Products')
+                   $currentQuantity = db::table('products')
                     ->where('productID' , '=', $size)
                     ->pluck('quantityinstock')
                     ->first();
 
-                db::table('Products')
+                db::table('products')
                 ->where('productid' , '=', $size)
                 ->update(['quantityinstock' => $currentQuantity - $quantity]);
                     
@@ -223,7 +223,7 @@ class checkoutController extends Controller {
             $total = Cart::getTotal(); 
 
                 //inserting the new customer
-            DB::table('tblCustomer')->insertGetId([
+            DB::table('tblcustomer')->insertGetId([
                 'LastName'=> $lastName,
                 'firstName' => $firstName,
                 'billingAddress' => $fullAddress, 
@@ -233,7 +233,7 @@ class checkoutController extends Controller {
                 'serviceAnswer' => $rating
             ]); 
                 //getting cust id
-            $customerId = DB::table('tblCustomer')
+            $customerId = DB::table('tblcustomer')
             ->where('LastName', '=', $lastName)
                 ->where('firstName' , '=',$firstName)
                 ->where('billingAddress' , '=', $fullAddress) 
@@ -248,14 +248,14 @@ class checkoutController extends Controller {
 
                 $date = date("Y-m-d h:i:s");
              
-            db::table('tblOrder')->insertGetId([
+            db::table('tblorder')->insertGetId([
                 'CustomerID'=> $customerId,
                 'orderDate' => $date,
                 'totalOrderPrice' => $total               
             ]); 
 
 
-            $orderID = DB::table('tblOrder')
+            $orderID = DB::table('tblorder')
                 ->where('CustomerID', '=', $customerId)
                 ->where('orderDate' , '=', $date)
                 ->pluck('orderID')
@@ -403,13 +403,13 @@ class checkoutController extends Controller {
                  'feature4'=>  $features[3]
                  ]);
 
-                   $currentQuantity = db::table('Products')
+                   $currentQuantity = db::table('products')
                     ->where('productid' , '=', $size)
                     ->pluck('quantityinstock')
                     ->first();
 
 
-                db::table('Products')
+                db::table('products')
                 ->where('productid' , '=', $size)
                 ->update(['quantityinstock' => $currentQuantity - $quantity]);
                     
